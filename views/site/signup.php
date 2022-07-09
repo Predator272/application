@@ -27,7 +27,7 @@ $this->title = 'Регистрация';
     font-size: 50px;
     color: white;
     position: relative;
-    top: 90px;
+    top: 91px;
   }
 
   canvas {
