@@ -43,16 +43,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
-        
+
     ],
     'params' => $params,
+    'name' => 'Eptagram',
+    'language' => 'ru',
 ];
 
 if (YII_ENV_DEV) {
