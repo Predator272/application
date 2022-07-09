@@ -26,13 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div>
     <h1><span>I</span><span>ntersection</span></h1>
-    <!-- <div class="wrapper" >
+    <div class="wrapper" >
     <svg width="200" height="200">
          <circle cx="80" cy="80" r="80" fill="black" />
         <circle class="bounce" cx="80" cy="55" r="15" fill="#e52e71" />
         <rect x="65" y="80" width="28" height="50" fill="#ff8a00" />
     </svg>
-</div> -->
+</div>
     </div>
     <div style="position:relative; left:600px; bottom:20px; min-width:300px; height:300px; ">
         <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
@@ -68,7 +68,7 @@ h1 span{
   transition: .5s linear
 }
 h1>span:nth-child(1){
-    font-size: 200px !important;
+    font-size: 80px !important;
 }
 h1:hover span:nth-child(1){
   margin-right: 5px;
