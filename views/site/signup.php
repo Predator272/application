@@ -1,8 +1,5 @@
 <?php
 
-use yii\bootstrap4\ActiveForm;
-use yii\bootstrap4\Html;
-
 $this->title = 'Регистрация';
 ?>
 
@@ -21,6 +18,7 @@ $this->title = 'Регистрация';
     top: 0;
     bottom: 0px;
     margin-bottom: 150px;
+    z-index: -343;
     left: 0;
     width: 100vw;
     height: 100vh;

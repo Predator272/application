@@ -10,11 +10,6 @@ require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
 $config = [
 	'id' => 'basic',
 	'basePath' => dirname(__DIR__),
-	'bootstrap' => ['log'],
-	'aliases' => [
-		'@bower' => '@vendor/bower-asset',
-		'@npm'   => '@vendor/npm-asset',
-	],
 	'components' => [
 		'request' => [
 			'cookieValidationKey' => 'randomstring',

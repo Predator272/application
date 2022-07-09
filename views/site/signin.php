@@ -1,51 +1,19 @@
 <?php
 
-use yii\bootstrap4\ActiveForm;
-use yii\bootstrap4\Html;
-
 $this->title = 'Вход';
 ?>
 
 <div>
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n{input}\n{error}",
-            'labelOptions' => ['class' => 'col-lg-1 col-form-label mr-lg-3'],
-            'inputOptions' => ['class' => 'col-lg-3 form-control'],
-            'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
-        ],
-    ]); ?>
-
     <div>
         <h1><span>I</span><span>ntersection</span></h1>
-        <!-- <div class="wrapper">
+        <div class="wrapper">
             <svg width="200" height="200">
                 <circle cx="80" cy="80" r="80" fill="black" />
                 <circle class="bounce" cx="80" cy="55" r="15" fill="#e52e71" />
                 <rect x="65" y="80" width="28" height="50" fill="#ff8a00" />
             </svg>
-        </div> -->
-    </div>
-    <div style="position:relative; left:600px; bottom:20px; min-width:300px; height:300px; ">
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-    </div>
-
-    <div class="form-group" style="position:relative; bottom:200px; left:640px">
-        <div class="offset-lg-1 col-lg-11">
-
-            <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-
-            <?= Html::a($text = 'Регистрация', $url = '../site', ['class' => 'btn btn-denger']) ?>
         </div>
     </div>
-
-
-    <?php ActiveForm::end(); ?>
 
 
     <style>
