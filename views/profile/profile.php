@@ -8,5 +8,5 @@ use yii\imagine\BaseImage;
 
 ?>
 <div class="site-profile">
-    
+    <img src="../avatar-placeholder.png">
 </div>
