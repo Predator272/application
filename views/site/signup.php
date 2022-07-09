@@ -51,8 +51,8 @@ for (var i = 0; i < numMetaballs; i++) {
     // фиксированное значение которое позволяет радиусу менятся то есть увеличиваться или уменьшатся 
     x: Math.random() * (width - 1 * radius) + radius,
     y: Math.random() * (height - 1 * radius) + radius,
-    vx: (Math.random() - 0.5) * 3,
-    vy: (Math.random() - 0.5) * 3,
+    vx: (Math.random() - 0.5) * 1,
+    vy: (Math.random() - 0.5) * 1,
     r: radius * 0.75
   });
 }
