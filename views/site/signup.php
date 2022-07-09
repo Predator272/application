@@ -61,8 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
       // фиксированное значение которое позволяет радиусу менятся то есть увеличиваться или уменьшатся 
       x: Math.random() * (width - 5 * radius) + radius,
       y: Math.random() * (height - 5 * radius) + radius,
-      vx: (Math.random() - 0.5) * 40090,
-      vy: (Math.random() - 0.5) * 40090,
+      vx: (Math.random() - 0.5) * 1,
+      vy: (Math.random() - 0.5) * 1,
       r: radius * 0.75
     });
   }
