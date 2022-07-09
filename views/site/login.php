@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
     <div>
-    <h1><span>I</span><span>ntersection</span></h1>
+    <!-- <h1><span>I</span><span>ntersection</span></h1> -->
     <div class="wrapper" >
     <svg width="200" height="200">
          <circle cx="80" cy="80" r="80" fill="black" />
@@ -34,14 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </svg>
 </div>
     </div>
-    <div style="position:relative; left:500px; bottom:300px; min-width:300px; height:300px; ">
+    <div style="position:relative; left:500px; bottom:200px; min-width:300px; height:300px; ">
         <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
     </div>
 
-        <div class="form-group" style="position:relative; bottom:500px; left:540px">
+        <div class="form-group" style="position:relative; bottom:400px; left:540px">
             <div class="offset-lg-1 col-lg-11">
                 
                 <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
