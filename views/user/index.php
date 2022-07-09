@@ -6,29 +6,16 @@ use yii\bootstrap4\Html;
 $this->title = 'Профиль';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="site-profile">
     <div class="img">
         <img src="/img/avatar.png" alt="" class="placeholder" width="256" height="256">
     </div>
     <div class="info">
-        <h4>$name</h4>
+        <h1>$name</h1>
+        <h6><strong>ID:</strong> $id</h6>
+        <label><strong>О себе:</strong></label>
         <div class="description">
-            <strong>ID:</strong> $id
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequatur cupiditate deserunt, error eum inventore maiores mollitia nesciunt possimus, quaerat, quidem quis ratione recusandae rem repellendus unde veritatis voluptatem!
         </div>
     </div>
 </div>
-<style>
-    .placeholder {
-        float: left;
-        border-radius: 50%;
-        border-radius: 9999999px;
-        background: #d9d9d9;
-    }
-
-    .info {
-        float: right;
-        padding-left: 35vw;
-        background: #8e8e8e;
-    }
-</style>
