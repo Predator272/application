@@ -23,13 +23,10 @@ AppAsset::register($this);
     <header>
         <div class="menu">
             <a href="<?= Yii::$app->homeUrl ?>"><img src="/favicon.ico" alt="" class="logo"><?= Yii::$app->name ?></a>
-<<<<<<< HEAD
             <a href="/signup">Регистрация</a>
             <a href="/signin">Вход</a>
             <a href="/signout">Выход</a>
             <a href="/user/index">Профиль</a>
-=======
-
         </div>
     </header>
     <main>
