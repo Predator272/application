@@ -20,8 +20,7 @@ $this->title = 'Регистрация';
     margin-bottom: 150px;
     z-index: -343;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    height: 500px;
   }
 
   .title {
@@ -41,8 +40,8 @@ $this->title = 'Регистрация';
   var canvas = document.createElement("canvas");
 
   // захват экрана и его ограничение
-  var width = canvas.width = window.innerWidth * 0.75;
-  var height = canvas.height = window.innerHeight * 0.75;
+  var width = canvas.width = window.innerWidth;
+  var height = canvas.height = window.innerHeight;
   document.body.appendChild(canvas);
   var gl = canvas.getContext('webgl');
   // получение позиции мишки при входе
