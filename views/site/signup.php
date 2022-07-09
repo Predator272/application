@@ -3,7 +3,10 @@
 $this->title = 'Регистрация';
 ?>
   <span class="title">INTERSETION</span>
+<div class="containers">
 
+
+</div>
 
 <style>
   .containers {
@@ -24,16 +27,11 @@ $this->title = 'Регистрация';
     font-size: 50px;
     color: white;
     position: relative;
-    top: 391px;
-    left: 39%;
- 
+    top: 91px;
   }
 
   canvas {
     width: 100%;
-    height: 40%;
-    margin-bottom: 250px;
-
   }
 </style>
 
