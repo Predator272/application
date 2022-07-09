@@ -26,13 +26,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div>
     <h1><span>I</span><span>ntersection</span></h1>
-    <div class="wrapper">
+    <div class="wrapper" >
     <svg width="200" height="200">
          <circle cx="80" cy="80" r="80" fill="black" />
         <circle class="bounce" cx="80" cy="55" r="15" fill="#e52e71" />
         <rect x="65" y="80" width="28" height="50" fill="#ff8a00" />
     </svg>
 </div>
+    </div>
+    <div style="position:relative; left:500px; bottom:300px; min-width:300px; height:300px; ">
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+
+        <?= $form->field($model, 'password')->passwordInput() ?>
+
+    </div>
+
+        <div class="form-group" style="position:relative; bottom:500px; left:540px">
+            <div class="offset-lg-1 col-lg-11">
+                
+                <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+       
+                <?= Html::a($text = 'Регистрация', $url = '../site', ['class'=> 'btn btn-denger']) ?>
+            </div>
+        </div>
+
+
+    <?php ActiveForm::end(); ?>
+
+   
 <style>
 
 h1{
@@ -71,6 +92,8 @@ h1:hover span{
 .wrapper {
     margin: 2em;
     display: flex;
+    position: relative;
+    right: 300px;
     justify-content: center;
 }
 
@@ -89,24 +112,4 @@ h1:hover span{
     animation-direction: alternate;
 }
 </style>
-    </div>
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-       
-
-        <div class="form-group">
-            <div class="offset-lg-1 col-lg-11">
-                
-                <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-       
-                <?= Html::a($text = 'Регистрация', $url = '../site', ['class'=> 'btn btn-denger']) ?>
-            </div>
-        </div>
-
-
-    <?php ActiveForm::end(); ?>
-
-   
 </div>
