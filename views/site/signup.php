@@ -1,7 +1,8 @@
 <div class="containers">
+    // название нашего приложения
   <span class="title" >INTERSETION</span>
 </div>
-
+//стили для разметки анимаций
 <style>
 
 .containers {
@@ -30,20 +31,24 @@ canvas {
 </style>
 
 <script>
+    //добавление элемента canvas
     var canvas = document.createElement("canvas");
+
+    // захват экрана и его ограничение
 var width = canvas.width = window.innerWidth * 0.75;
 var height = canvas.height = window.innerHeight * 0.75;
 document.body.appendChild(canvas);
 var gl = canvas.getContext('webgl');
-
+// получение позиции мишки при входе
 var mouse = {x: 0, y: 0};
 
 var numMetaballs = 30;
 var metaballs = [];
-
+//рандомное расположение элементов canvas
 for (var i = 0; i < numMetaballs; i++) {
   var radius = Math.random() * 60 + 10;
   metaballs.push({
+    // фиксированное значение которое позволяет радиусу менятся то есть увеличиваться или уменьшатся 
     x: Math.random() * (width - 2 * radius) + radius,
     y: Math.random() * (height - 2 * radius) + radius,
     vx: (Math.random() - 0.5) * 3,
@@ -51,7 +56,7 @@ for (var i = 0; i < numMetaballs; i++) {
     r: radius * 0.75
   });
 }
-
+// обнуление которое я спиздил
 var vertexShaderSrc = `
 attribute vec2 position;
 
@@ -93,7 +98,7 @@ gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
 
 `;
-
+// захват экрана которое позволяет с помощью обнуления обновлять изменения при расширении или обнулении
 var vertexShader = compileShader(vertexShaderSrc, gl.VERTEX_SHADER);
 var fragmentShader = compileShader(fragmentShaderSrc, gl.FRAGMENT_SHADER);
 
@@ -112,7 +117,7 @@ var vertexData = new Float32Array([
 var vertexDataBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
-
+// фиксированное изменение позиции
 var positionHandle = getAttribLocation(program, 'position');
 gl.enableVertexAttribArray(positionHandle);
 gl.vertexAttribPointer(positionHandle,
@@ -126,6 +131,7 @@ gl.vertexAttribPointer(positionHandle,
 var metaballsHandle = getUniformLocation(program, 'metaballs');
 
 loop();
+// эта функция скрытая, которая позволяет начать двигатться элементам которые сами рисуются 
 function loop() {
   for (var i = 0; i < numMetaballs; i++) {
     var metaball = metaballs[i];
@@ -135,7 +141,8 @@ function loop() {
     if (metaball.x < metaball.r || metaball.x > width - metaball.r) metaball.vx *= -1;
     if (metaball.y < metaball.r || metaball.y > height - metaball.r) metaball.vy *= -1;
   }
-
+//изменение флота элемента на то которое было в обнулении 
+// это позволяет объектам появляться в рандомных местах
   var dataToSendToGPU = new Float32Array(3 * numMetaballs);
   for (var i = 0; i < numMetaballs; i++) {
     var baseIndex = 3 * i;
@@ -151,7 +158,7 @@ function loop() {
 
   requestAnimationFrame(loop);
 }
-
+// получает source элементов то есть фиксировать их в рандоме 
 function compileShader(shaderSource, shaderType) {
   var shader = gl.createShader(shaderType);
   gl.shaderSource(shader, shaderSource);
@@ -171,9 +178,11 @@ function getUniformLocation(program, name) {
   }
   return uniformLocation;
 }
+// получает значение элементов 
 
 function getAttribLocation(program, name) {
   var attributeLocation = gl.getAttribLocation(program, name);
+  // если поставить плюсовое значение то пупырки будут бесконечнв и заполнят весь экран
   if (attributeLocation === -1) {
     throw 'Can not find attribute ' + name + '.';
   }
