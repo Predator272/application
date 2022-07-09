@@ -1,8 +1,8 @@
 <div class="containers">
-    // название нашего приложения
+ 
   <span class="title" >INTERSETION</span>
 </div>
-//стили для разметки анимаций
+
 <style>
 
 .containers {
