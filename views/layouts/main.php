@@ -25,11 +25,12 @@ AppAsset::register($this);
         <div class="menu">
             <a href="<?= Yii::$app->homeUrl ?>"><img src="/favicon.ico" alt="" class="logo"><?= Yii::$app->name ?></a>
             <?php
-                echo Html::a('Регистрация',Url::toRoute(['site/signup']), $options = [])
+                echo Html::a('Регистрация',Url::toRoute(['site/signup']), $options = []);
+                echo Html::a('Вход',Url::toRoute(['site/signin']), $options = []);
+                echo Html::a('Выход',Url::toRoute(['site/signout']), $options = []);
+                echo Html::a('Профиль',Url::toRoute(['user/index']), $options = []);
             ?>
-            <a href="/site/signin">Вход</a>
-            <a href="/site/signout">Выход</a>
-            <a href="/user/index">Профиль</a>
+
         </div>
     </header>
     <main>
