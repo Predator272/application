@@ -2,6 +2,7 @@
 
 use app\assets\AppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -23,7 +24,9 @@ AppAsset::register($this);
     <header>
         <div class="menu">
             <a href="<?= Yii::$app->homeUrl ?>"><img src="/favicon.ico" alt="" class="logo"><?= Yii::$app->name ?></a>
-            <a href="/site/signup">Регистрация</a>
+            <?php
+                echo Html::a('Регистрация',Url::toRoute(['site/signup']), $options = [])
+            ?>
             <a href="/site/signin">Вход</a>
             <a href="/site/signout">Выход</a>
             <a href="/user/index">Профиль</a>
