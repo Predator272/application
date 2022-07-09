@@ -116,11 +116,11 @@ gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
 var positionHandle = getAttribLocation(program, 'position');
 gl.enableVertexAttribArray(positionHandle);
 gl.vertexAttribPointer(positionHandle,
-                       2, // position is a vec2
-                       gl.FLOAT, // each component is a float
-                       gl.FALSE, // don't normalize values
-                       2 * 4, // two 4 byte float components per vertex
-                       0 // offset into each span of vertex data
+                       2, 
+                       gl.FLOAT, 
+                       gl.FALSE, 
+                       2 * 4,
+                       0 
                       );
 
 var metaballsHandle = getUniformLocation(program, 'metaballs');
