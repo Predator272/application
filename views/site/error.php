@@ -1,27 +1,20 @@
 <?php
 
-/** @var yii\web\View $this */
-/** @var string $name */
-/** @var string $message */
-/** @var Exception$exception */
-
 use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
 
+<div class="block">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
-    </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
+    <?= nl2br(Html::encode($message)) ?>
 </div>
+
+<style>
+    .block {
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 15px;
+    }
+</style>
