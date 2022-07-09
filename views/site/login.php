@@ -46,6 +46,9 @@ h1{
 h1 span{
   transition: .5s linear
 }
+h1>span:nth-child(1){
+    font-size: 80px !important;
+}
 h1:hover span:nth-child(1){
   margin-right: 5px;
  color: red;
