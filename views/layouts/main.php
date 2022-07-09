@@ -27,7 +27,7 @@ AppAsset::register($this);
     <header>
         <?php
         NavBar::begin([
-            'brandLabel' => Yii::$app->name,
+            'brandLabel' => Html::img(['/favicon.ico'], ['class' => 'mr-2', 'width' => '24']) . Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => ['class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top'],
         ]);
