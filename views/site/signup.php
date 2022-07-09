@@ -1,63 +1,73 @@
+<?php
+
+use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Html;
+
+$this->title = 'Регистрация';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
 <div class="containers">
- 
-  <span class="title" >INTERSETION</span>
+
+  <span class="title">INTERSETION</span>
 </div>
 
 <style>
+  .containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.containers {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
 
-.title {
-  font-size: 50px;
-  color: white;
-  position: relative;
-  top: 90px;
-}
+  .title {
+    font-size: 50px;
+    color: white;
+    position: relative;
+    top: 90px;
+  }
 
-canvas {
-  width: 100%;
-}
-
+  canvas {
+    width: 100%;
+  }
 </style>
 
 <script>
-    //добавление элемента canvas
-    var canvas = document.createElement("canvas");
+  //добавление элемента canvas
+  var canvas = document.createElement("canvas");
 
-    // захват экрана и его ограничение
-var width = canvas.width = window.innerWidth * 0.75;
-var height = canvas.height = window.innerHeight * 0.75;
-document.body.appendChild(canvas);
-var gl = canvas.getContext('webgl');
-// получение позиции мишки при входе
-var mouse = {x: 0, y: 0};
+  // захват экрана и его ограничение
+  var width = canvas.width = window.innerWidth * 0.75;
+  var height = canvas.height = window.innerHeight * 0.75;
+  document.body.appendChild(canvas);
+  var gl = canvas.getContext('webgl');
+  // получение позиции мишки при входе
+  var mouse = {
+    x: 0,
+    y: 0
+  };
 
-var numMetaballs = 30;
-var metaballs = [];
-//рандомное расположение элементов canvas
-for (var i = 0; i < numMetaballs; i++) {
-  var radius = Math.random() * 60 + 10;
-  metaballs.push({
-    // фиксированное значение которое позволяет радиусу менятся то есть увеличиваться или уменьшатся 
-    x: Math.random() * (width - 5 * radius) + radius,
-    y: Math.random() * (height - 5 * radius) + radius,
-    vx: (Math.random() - 0.5) * 40090,
-    vy: (Math.random() - 0.5) * 40090,
-    r: radius * 0.75
-  });
-}
-// обнуление которое я спиздил
-var vertexShaderSrc = `
+  var numMetaballs = 30;
+  var metaballs = [];
+  //рандомное расположение элементов canvas
+  for (var i = 0; i < numMetaballs; i++) {
+    var radius = Math.random() * 60 + 10;
+    metaballs.push({
+      // фиксированное значение которое позволяет радиусу менятся то есть увеличиваться или уменьшатся 
+      x: Math.random() * (width - 5 * radius) + radius,
+      y: Math.random() * (height - 5 * radius) + radius,
+      vx: (Math.random() - 0.5) * 40090,
+      vy: (Math.random() - 0.5) * 40090,
+      r: radius * 0.75
+    });
+  }
+  // обнуление которое я спиздил
+  var vertexShaderSrc = `
 attribute vec2 position;
 
 void main() {
@@ -67,7 +77,7 @@ gl_Position = vec4(position, 0.0, 1.0);
 }
 `;
 
-var fragmentShaderSrc = `
+  var fragmentShaderSrc = `
 precision highp float;
 
 const float WIDTH = ` + (width >> 0) + `.0;
@@ -98,99 +108,99 @@ gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
 
 `;
-// захват экрана которое позволяет с помощью обнуления обновлять изменения при расширении или обнулении
-var vertexShader = compileShader(vertexShaderSrc, gl.VERTEX_SHADER);
-var fragmentShader = compileShader(fragmentShaderSrc, gl.FRAGMENT_SHADER);
+  // захват экрана которое позволяет с помощью обнуления обновлять изменения при расширении или обнулении
+  var vertexShader = compileShader(vertexShaderSrc, gl.VERTEX_SHADER);
+  var fragmentShader = compileShader(fragmentShaderSrc, gl.FRAGMENT_SHADER);
 
-var program = gl.createProgram();
-gl.attachShader(program, vertexShader);
-gl.attachShader(program, fragmentShader);
-gl.linkProgram(program);
-gl.useProgram(program);
+  var program = gl.createProgram();
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+  gl.useProgram(program);
 
-var vertexData = new Float32Array([
-  -1.0,  1.0, // top left
-  -1.0, -1.0, // bottom left
-  1.0,  1.0, // top right
-  1.0, -1.0, // bottom right
-]);
-var vertexDataBuffer = gl.createBuffer();
-gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);
-gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
-// фиксированное изменение позиции
-var positionHandle = getAttribLocation(program, 'position');
-gl.enableVertexAttribArray(positionHandle);
-gl.vertexAttribPointer(positionHandle,
-                       2, 
-                       gl.FLOAT, 
-                       gl.FALSE, 
-                       2 * 4,
-                       0 
-                      );
+  var vertexData = new Float32Array([
+    -1.0, 1.0, // top left
+    -1.0, -1.0, // bottom left
+    1.0, 1.0, // top right
+    1.0, -1.0, // bottom right
+  ]);
+  var vertexDataBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
+  // фиксированное изменение позиции
+  var positionHandle = getAttribLocation(program, 'position');
+  gl.enableVertexAttribArray(positionHandle);
+  gl.vertexAttribPointer(positionHandle,
+    2,
+    gl.FLOAT,
+    gl.FALSE,
+    2 * 4,
+    0
+  );
 
-var metaballsHandle = getUniformLocation(program, 'metaballs');
+  var metaballsHandle = getUniformLocation(program, 'metaballs');
 
-loop();
-// эта функция скрытая, которая позволяет начать двигатться элементам которые сами рисуются 
-function loop() {
-  for (var i = 0; i < numMetaballs; i++) {
-    var metaball = metaballs[i];
-    metaball.x += metaball.vx;
-    metaball.y += metaball.vy;
+  loop();
+  // эта функция скрытая, которая позволяет начать двигатться элементам которые сами рисуются 
+  function loop() {
+    for (var i = 0; i < numMetaballs; i++) {
+      var metaball = metaballs[i];
+      metaball.x += metaball.vx;
+      metaball.y += metaball.vy;
 
-    if (metaball.x < metaball.r || metaball.x > width - metaball.r) metaball.vx *= -1;
-    if (metaball.y < metaball.r || metaball.y > height - metaball.r) metaball.vy *= -1;
+      if (metaball.x < metaball.r || metaball.x > width - metaball.r) metaball.vx *= -1;
+      if (metaball.y < metaball.r || metaball.y > height - metaball.r) metaball.vy *= -1;
+    }
+    //изменение флота элемента на то которое было в обнулении 
+    // это позволяет объектам появляться в рандомных местах
+    var dataToSendToGPU = new Float32Array(3 * numMetaballs);
+    for (var i = 0; i < numMetaballs; i++) {
+      var baseIndex = 3 * i;
+      var mb = metaballs[i];
+      dataToSendToGPU[baseIndex + 0] = mb.x;
+      dataToSendToGPU[baseIndex + 1] = mb.y;
+      dataToSendToGPU[baseIndex + 2] = mb.r;
+    }
+    gl.uniform3fv(metaballsHandle, dataToSendToGPU);
+
+    //Draw
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    requestAnimationFrame(loop);
   }
-//изменение флота элемента на то которое было в обнулении 
-// это позволяет объектам появляться в рандомных местах
-  var dataToSendToGPU = new Float32Array(3 * numMetaballs);
-  for (var i = 0; i < numMetaballs; i++) {
-    var baseIndex = 3 * i;
-    var mb = metaballs[i];
-    dataToSendToGPU[baseIndex + 0] = mb.x;
-    dataToSendToGPU[baseIndex + 1] = mb.y;
-    dataToSendToGPU[baseIndex + 2] = mb.r;
-  }
-  gl.uniform3fv(metaballsHandle, dataToSendToGPU);
-  
-  //Draw
-  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  // получает source элементов то есть фиксировать их в рандоме 
+  function compileShader(shaderSource, shaderType) {
+    var shader = gl.createShader(shaderType);
+    gl.shaderSource(shader, shaderSource);
+    gl.compileShader(shader);
 
-  requestAnimationFrame(loop);
-}
-// получает source элементов то есть фиксировать их в рандоме 
-function compileShader(shaderSource, shaderType) {
-  var shader = gl.createShader(shaderType);
-  gl.shaderSource(shader, shaderSource);
-  gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      throw "Shader compile failed with: " + gl.getShaderInfoLog(shader);
+    }
 
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    throw "Shader compile failed with: " + gl.getShaderInfoLog(shader);
+    return shader;
   }
 
-  return shader;
-}
-
-function getUniformLocation(program, name) {
-  var uniformLocation = gl.getUniformLocation(program, name);
-  if (uniformLocation === -1) {
-    throw 'Can not find uniform ' + name + '.';
+  function getUniformLocation(program, name) {
+    var uniformLocation = gl.getUniformLocation(program, name);
+    if (uniformLocation === -1) {
+      throw 'Can not find uniform ' + name + '.';
+    }
+    return uniformLocation;
   }
-  return uniformLocation;
-}
-// получает значение элементов 
+  // получает значение элементов 
 
-function getAttribLocation(program, name) {
-  var attributeLocation = gl.getAttribLocation(program, name);
-  // если поставить плюсовое значение то пупырки будут бесконечнв и заполнят весь экран
-  if (attributeLocation === -1) {
-    throw 'Can not find attribute ' + name + '.';
+  function getAttribLocation(program, name) {
+    var attributeLocation = gl.getAttribLocation(program, name);
+    // если поставить плюсовое значение то пупырки будут бесконечнв и заполнят весь экран
+    if (attributeLocation === -1) {
+      throw 'Can not find attribute ' + name + '.';
+    }
+    return attributeLocation;
   }
-  return attributeLocation;
-}
 
-canvas.onmousemove = function(e) {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-}
+  canvas.onmousemove = function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }
 </script>
