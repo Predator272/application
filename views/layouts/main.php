@@ -2,6 +2,7 @@
 
 use app\assets\AppAsset;
 use yii\helpers\Html;
+use Yii;
 
 AppAsset::register($this);
 ?>
@@ -24,10 +25,10 @@ AppAsset::register($this);
         <div class="menu">
             <a href="<?= Yii::$app->homeUrl ?>"><img src="/favicon.ico" alt="" class="logo"><?= Yii::$app->name ?></a>
             <?php 
-                echo Html::a('Регистрация', 'site/signup/', $options = []);
-                echo Html::a('Вход', 'site/signin/', $options = []);
-                echo Html::a('Выход', '/ite/signout/', $options = []);
-                echo Html::a('Профиль', 'user/view', $options = []);
+                echo Html::a('Регистрация', '/site/signup/', $options = []);
+                echo Html::a('Вход', '/site/signin/', $options = []);
+                echo Html::a('Выход', '/site/signout/', $options = []);
+                echo Html::a('Профиль', '/user/view', $options = []);
             ?>
         </div>
     </header>
