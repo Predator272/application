@@ -2,10 +2,10 @@
 
 $this->title = 'Регистрация';
 ?>
-
+  <span class="title">INTERSETION</span>
 <div class="containers">
 
-  <span class="title">INTERSETION</span>
+
 </div>
 
 <style>
