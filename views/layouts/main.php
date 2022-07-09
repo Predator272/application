@@ -1,14 +1,13 @@
 <?php
 
 use app\assets\AppAsset;
-use app\widgets\Alert;
-use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
@@ -23,20 +22,14 @@ AppAsset::register($this);
 
 <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
-
     <header>
-        
-        <?php
-        
-        NavBar::begin([
+        <?php NavBar::begin([
             'brandLabel' => Html::img(['/favicon.ico'], ['class' => 'mr-2', 'width' => '24']) . Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
-            'options' => ['class' => 'linke navbar-expand-md   fixed-top'],
-          
-        ]);
-     
-      
-        echo Nav::widget([
+            'options' => ['class' => 'linke navbar-expand-md fixed-top'],
+
+        ]); ?>
+        <?= Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'items' => [
                 ['label' => 'Вход', 'url' => ['/site/signin']],
@@ -48,24 +41,24 @@ AppAsset::register($this);
                     ],
                 ],
             ],
-        ]);
-        NavBar::end();
-        ?>
+        ]); ?>
+        <?php NavBar::end(); ?>
         <div class="linke">
-     <div class="fav">
-            <svg width="200" height="200">
-                
-                <circle class="bounce" cx="80" cy="55" r="15" fill="#e52e71" />
-                <rect x="65" y="80" width="28" height="50" fill="#ff8a00" />
-            </svg>
-     </div>
+            <div class="fav">
+                <svg width="200" height="200">
+
+                    <circle class="bounce" cx="80" cy="55" r="15" fill="#e52e71" />
+                    <rect x="65" y="80" width="28" height="50" fill="#ff8a00" />
+                </svg>
+            </div>
         </div>
         <style>
-            .fav{
+            .fav {
                 position: relative;
                 bottom: 110px;
             }
-            .linke{
+
+            .linke {
                 position: relative;
                 top: 50px;
                 bottom: -20px;
@@ -76,19 +69,15 @@ AppAsset::register($this);
 
     <main role="main" class="flex-shrink-0">
         <div class="container">
-          
-            <?= Alert::widget() ?>
             <?= $content ?>
         </div>
     </main>
-
     <footer class="footer mt-auto py-3 text-muted">
         <div class="container">
             <p class="float-left">&copy; My Company <?= date('Y') ?></p>
             <p class="float-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
-
     <?php $this->endBody() ?>
 </body>
 

@@ -4,7 +4,6 @@ use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 
 $this->title = 'Регистрация';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="containers">
