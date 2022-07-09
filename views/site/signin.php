@@ -45,8 +45,6 @@ $this->title = 'Вход';
 
         }
 
-        h1:hover span:nth-child(1):after {}
-
         h1:hover span:nth-child(2) {
             margin-left: 30px
         }
