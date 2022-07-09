@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="site-profile">
     <div class="img">
-        <div class="placeholder">$avatar</div><!--потом заменить на авы через бд-->
+        <img src="/img/avatar.png" alt="" class="placeholder" width="256" height="256">
     </div>
     <div class="info">
         <h4>$name</h4>
@@ -19,15 +19,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <style>
-    .placeholder{
-        padding: 100px 85px;
+    .placeholder {
         float: left;
-        -webkit-border-radius: 100px;
-        -moz-border-radius: 100px;
+        border-radius: 50%;
         border-radius: 9999999px;
         background: #d9d9d9;
     }
-    .info{
+
+    .info {
         float: right;
         padding-left: 35vw;
         background: #8e8e8e;
