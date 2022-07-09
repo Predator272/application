@@ -25,12 +25,17 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
 
     <header>
+        
         <?php
+        
         NavBar::begin([
             'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
-            'options' => ['class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top'],
+            'options' => ['class' => 'linke navbar-expand-md   fixed-top'],
+          
         ]);
+     
+      
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'items' => [
@@ -46,11 +51,32 @@ AppAsset::register($this);
         ]);
         NavBar::end();
         ?>
+        <div class="linke">
+     <div class="fav">
+            <svg width="200" height="200">
+                
+                <circle class="bounce" cx="80" cy="55" r="15" fill="#e52e71" />
+                <rect x="65" y="80" width="28" height="50" fill="#ff8a00" />
+            </svg>
+     </div>
+        </div>
+        <style>
+            .fav{
+                position: relative;
+                bottom: 110px;
+            }
+            .linke{
+                position: relative;
+                top: 50px;
+                bottom: -20px;
+                padding-bottom: 0px;
+            }
+        </style>
     </header>
 
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <?= Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : []]) ?>
+          
             <?= Alert::widget() ?>
             <?= $content ?>
         </div>

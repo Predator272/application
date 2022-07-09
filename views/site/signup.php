@@ -20,6 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     position: absolute;
     top: 0;
+    bottom: 0px;
+    margin-bottom: 150px;
     left: 0;
     width: 100vw;
     height: 100vh;
