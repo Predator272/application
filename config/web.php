@@ -48,7 +48,6 @@ $config = [
         ],
 
     ],
-    'params' => $params,
     'name' => 'Eptagram',
     'language' => 'ru',
 ];
