@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-profile">
     <div class="img">
-        <img src="/img/avatar.png" alt="" class="placeholder" width="256" height="256">
+        <img src="../img/avatar.png" alt="" class="placeholder" width="256" height="256">
     </div>
     <div class="info">
         <h1>$name</h1>
