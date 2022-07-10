@@ -49,3 +49,4 @@
   <input type="search" name="text" required placeholder="поиск">
   <input type="image" src="вставить потом картинку"/> 
 </form>
+
