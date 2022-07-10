@@ -1,3 +1,7 @@
+<?php 
+use yii\helpers\Url;
+?>
+
 <style>
 .form-search {  
   position: relative;
@@ -44,7 +48,7 @@
 }
 </style>
 
-<form class="form-search" style="position: relative; left:1000px; top:50px" action="/search/" target="">
+<form class="form-search" style="position: relative; left:1000px; top:50px" action="<?= Url::toRoute(['/news/search']) ?>" target="">
   <input type="hidden" name="searchid" value="808327">
   <input type="search" name="text" required placeholder="поиск">
   <input type="image" src="вставить потом картинку"/> 

@@ -27,7 +27,7 @@ AppAsset::register($this);
             <?php
                 echo Html::a('Регистрация',Url::toRoute(['site/signup']), $options = ['class'=>'font-style', 'style'=>'color:white']);
                 echo Html::a('Вход',Url::toRoute(['site/signin']), $options = ['class'=>'font-style', 'style'=>'color:white']);
-                echo Html::a('Новости',Url::toRoute(['news']), $options = ['class'=>'font-style', 'style'=>'color:white']);
+                echo Html::a('Новости',Url::toRoute(['site/news']), $options = ['class'=>'font-style', 'style'=>'color:white']);
                 echo Html::a('Выход',Url::toRoute(['site/signout']), $options = ['class'=>'font-style', 'style'=>'color:white']);
                 echo Html::a('Профиль',Url::toRoute(['user/index']), $options = ['class'=>'font-style', 'style'=>'color:white']);
             ?>
