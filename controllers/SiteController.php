@@ -40,7 +40,11 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-
+    // news public
+    public function actionNews()
+    {
+        return $this->render('../news/index');
+    }
     //Регистрация
     public function actionSignup()
     {

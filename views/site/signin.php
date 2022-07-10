@@ -79,5 +79,6 @@ $this->title = 'Вход';
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+       
     </style>
 </div>
