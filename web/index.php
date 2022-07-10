@@ -39,9 +39,9 @@ $config = [
 		],
 		'db' => [
 			'class' => 'yii\db\Connection',
-			'dsn' => 'mysql:host=127.0.0.1;dbname=yii2basic',
-			'username' => 'root',
-			'password' => 'root',
+			'dsn' => 'mysql:host=87.249.44.192;dbname=default_db',
+			'username' => 'gen_user',
+			'password' => 'sas2003s',
 			'charset' => 'utf8',
 			// Schema cache options (for production environment)
 			//'enableSchemaCache' => true,
