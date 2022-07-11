@@ -39,10 +39,11 @@ $config = [
 		],
 		'db' => [
 			'class' => 'yii\db\Connection',
-			'dsn' => 'mysql:host=87.249.44.192;dbname=default_db',
-			'username' => 'gen_user',
-			'password' => 'sas2003s',
+			'dsn' => 'mysql:host=sas2001v.beget.tech; dbname=sas2001v_s',
+			'username' => 'sas2001v_s',
+			'password' => 'sas2003!',
 			'charset' => 'utf8',
+			
 			// Schema cache options (for production environment)
 			//'enableSchemaCache' => true,
 			//'schemaCacheDuration' => 60,
