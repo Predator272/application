@@ -34,53 +34,42 @@ class MusicController extends Controller
 
 	public function actionIndex()
 	{
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }else {
-            $user = User::find()->where(['rule' => 0])->all();
-            $model = Music::find()->all();
-    
-            return $this->render('index', [
-                'user' => $user,
-                'model' => $model,
-            ]);
-        }
+		$model = Music::find();
+		return $this->render('index', ['model' => $model]);
 	}
 
-    public function actionMymusic($id = 'Нет')
+	public function actionMymusic($id = 'Нет')
 	{
 
-        if($id == 'Нет'){
-            
-        }else {
-            $mymusic = new Mymusic;
-            $mymusic->idMusic = $id;
-            $mymusic->idUser = Yii::$app->user->id;
-            $mymusic->save();
-        }
-        $music = Mymusic::find()->where(['idUser' => Yii::$app->user->id])->all();
-        $user = User::find()->where(['rule' => 0])->all();
-        return $this->render('mymusic', [
-            'user' => $user,
-            'model' => $music,
-        ]);
-
-
-        
+		if ($id == 'Нет') {
+		} else {
+			$mymusic = new Mymusic;
+			$mymusic->idMusic = $id;
+			$mymusic->idUser = Yii::$app->user->id;
+			$mymusic->save();
+		}
+		$music = Mymusic::find()->where(['idUser' => Yii::$app->user->id])->all();
+		$user = User::find()->where(['rule' => 0])->all();
+		return $this->render('mymusic', [
+			'user' => $user,
+			'model' => $music,
+		]);
 	}
 
-    public function actionAdd($id){
-        
-        
-        $user = User::find()->where(['rule' => 0])->all();
+	public function actionAdd($id)
+	{
 
 
-        return $this->render('index', [
-            'user' => $user,
-            'model' => $music,
-        ]);
-    }
-    public function actionDel($id){
-        echo 1;
-    }
+		$user = User::find()->where(['rule' => 0])->all();
+
+
+		return $this->render('index', [
+			'user' => $user,
+			'model' => $music,
+		]);
+	}
+	public function actionDel($id)
+	{
+		echo 1;
+	}
 }
