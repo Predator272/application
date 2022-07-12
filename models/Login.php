@@ -22,6 +22,15 @@ class Login extends Model
 		];
 	}
 
+	public function attributeLabels()
+	{
+		return [
+			'email' => 'Логин',
+			'password' => 'Пароль',
+			'rememberMe' => 'Запомнить меня',
+		];
+	}
+
 	public function validatePassword($attribute, $params)
 	{
 		if (!$this->hasErrors()) {
