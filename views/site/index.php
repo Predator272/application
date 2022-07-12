@@ -1,15 +1,12 @@
 <?php
 
 
-use yii\helpers\Html;
-
-use yii\bootstrap4\Html;
 
 
 $this->title = 'Главная';
 ?>
 
-<<<<<<< HEAD
+
 <div class="container-fluid">
 <section style="position: relative; left:940px; top:100px; background:#dedede; width:120px;">
 <div class="form-check pb-2" >
