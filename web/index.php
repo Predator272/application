@@ -36,10 +36,10 @@ $config = [
 		],
 		'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=database',
-            'username' => 'root',
-            'password' => 'root',
-            'charset' => 'utf8',
+            'dsn' => 'mysql:host=sas2001v.beget.tech; dbname=sas2001v_s',
+			'username' => 'sas2001v_s',
+			'password' => 'sas2003!',
+			'charset' => 'utf8',
 		],
 		'urlManager' => [
 			'enablePrettyUrl' => true,
