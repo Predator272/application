@@ -85,8 +85,8 @@ $this->title = 'Главная';
     foreach ($models as $music) {
           echo '
           <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
-              '.$media->name.'
-              <div class="d-flex ml-3 w-75">'.$media->name.'  '.$media->execute.'</div>
+              '.$music->name.'
+              <div class="d-flex ml-3 w-75">'.$music->name.'  '.$music->executor.'</div>
           
               
           </div>
