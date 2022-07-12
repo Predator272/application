@@ -7,7 +7,7 @@ use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
-    public function rules()
+	public function rules()
 	{
 		return [
 			[['name', 'email', 'password'], 'required'],
@@ -19,7 +19,16 @@ class User extends ActiveRecord implements IdentityInterface
 		];
 	}
 
-    public static function findIdentity($id)
+	public function attributeLabels()
+	{
+		return [
+			'email' => 'Логин',
+			'password' => 'Пароль',
+			'name' => 'Имя',
+		];
+	}
+
+	public static function findIdentity($id)
 	{
 		return static::findOne($id);
 	}
@@ -34,7 +43,7 @@ class User extends ActiveRecord implements IdentityInterface
 		return null;
 	}
 
-    public function getId()
+	public function getId()
 	{
 		return $this->id;
 	}

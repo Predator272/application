@@ -1,20 +1,18 @@
 <?php
 
-use yii\helpers\Url;
+use yii\bootstrap4\Html;
 
-$this->title = 'Профиль';
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="site-profile">
-    <div class="img">
-        <img src="<?= Url::toRoute(['img/avatar.png']) ?>" alt="" class="placeholder" width="256" height="256">
-    </div>
-    <div class="info">
-        <h1><?= $model->name ?></h1>
-        <h6><strong>ID:</strong> <?= $model->id ?></h6>
-        <label><strong>О себе:</strong></label>
-        <div class="description">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequatur cupiditate deserunt, error eum inventore maiores mollitia nesciunt possimus, quaerat, quidem quis ratione recusandae rem repellendus unde veritatis voluptatem!
-        </div>
-    </div>
+<div class="border rounded bg-white p-3 mb-3 d-flex">
+	<?= Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded', 'width' => '200']) ?>
+	<div class="ml-4">
+		<h3><?= Html::encode($this->title) ?></h3>
+		<p class="mb-2"><strong>ID:</strong> <?= $model->id ?></p>
+		<p class="mb-2"><strong>О себе:</strong>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequatur cupiditate deserunt, error eum inventore maiores mollitia nesciunt possimus, quaerat, quidem quis ratione recusandae rem repellendus unde veritatis voluptatem!
+		</p>
+	</div>
 </div>

@@ -1,10 +1,11 @@
 <?php
 
-use yii\helpers\Html;
+use yii\bootstrap4\Html;
 
 $this->title = $name;
 ?>
 
-<h1><?= Html::encode($this->title) ?></h1>
-
-<?= nl2br(Html::encode($message)) ?>
+<div class="alert alert-danger">
+	<h3><?= Html::encode($this->title) ?></h3>
+	<?= nl2br(Html::encode($message)) ?>
+</div>
