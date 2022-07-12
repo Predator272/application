@@ -13,20 +13,17 @@ $config = [
 	'components' => [
 		'request' => [
 			'cookieValidationKey' => 'randomstring',
+			'enableCsrfValidation' => false,
 		],
 		'cache' => [
 			'class' => 'yii\caching\FileCache',
 		],
 		'user' => [
 			'identityClass' => 'app\models\User',
-			'enableAutoLogin' => true,
+			'enableAutoLogin' => false,
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
-		],
-		'mailer' => [
-			'class' => 'yii\swiftmailer\Mailer',
-			'useFileTransport' => true,
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -38,16 +35,11 @@ $config = [
 			],
 		],
 		'db' => [
-			'class' => 'yii\db\Connection',
-			'dsn' => 'mysql:host=sas2001v.beget.tech; dbname=sas2001v_s',
-			'username' => 'sas2001v_s',
-			'password' => 'sas2003!',
-			'charset' => 'utf8',
-			
-			// Schema cache options (for production environment)
-			//'enableSchemaCache' => true,
-			//'schemaCacheDuration' => 60,
-			//'schemaCache' => 'cache',
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=database',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8',
 		],
 		'urlManager' => [
 			'enablePrettyUrl' => true,
@@ -58,7 +50,7 @@ $config = [
 		],
 
 	],
-	'name' => 'Eptagram',
+	'name' => 'Telegram',
 	'language' => 'ru',
 ];
 

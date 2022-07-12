@@ -4,73 +4,89 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
-use app\models\LoginForm;
+use app\models\User;
+use app\models\Login;
 
 class SiteController extends Controller
 {
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
+	public function behaviors()
+	{
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				'denyCallback' => function ($rule, $action) {
+					throw new ForbiddenHttpException('Вам не разрешено производить данное действие.');
+				},
+				'only' => ['signup', 'signin', 'signout',],
+				'rules' => [
+					[
+						'actions' => ['signup', 'signin'],
+						'allow' => true,
+						'roles' => ['?'],
+					],
+					[
+						'actions' => ['signout'],
+						'allow' => true,
+						'roles' => ['@'],
+					],
+				],
+			],
+		];
+	}
 
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-        ];
-    }
+	public function actions()
+	{
+		return [
+			'error' => [
+				'class' => 'yii\web\ErrorAction',
+			],
+		];
+	}
 
-    //Главная страница
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-    // news public
-    public function actionNews()
-    {
-        return $this->render('../news/index');
-    }
-    //Регистрация
-    public function actionSignup()
-    {
-        return $this->render('signup');
-    }
+	//Главная страница
+	public function actionIndex()
+	{
+		return $this->render('index');
+	}
 
-    //Вход
-    public function actionSignin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+	//Регистрация
+	public function actionSignup()
+	{
+		$model = new User();
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
+		if ($this->request->isPost) {
+			if ($model->load($this->request->post()) && $model->save()) {
+				Yii::$app->user->login($model, 3600 * 24 * 30);
+				return $this->redirect(['user/index']);
+			}
+		} else {
+			$model->loadDefaultValues();
+		}
 
-        $model->password = '';
-        return $this->render('signin', ['model' => $model]);
-    }
+		return $this->render('signup', ['model' => $model]);
+	}
 
-    //Выход
-    public function actionSignout()
-    {
-        Yii::$app->user->logout();
-        return $this->goHome();
-    }
+	//Вход
+	public function actionSignin()
+	{
+		$model = new Login();
+
+		if ($this->request->isPost) {
+			if ($model->load($this->request->post()) && $model->login()) {
+				return $this->goHome();
+			}
+		}
+
+		$model->password = '';
+		return $this->render('signin', ['model' => $model]);
+	}
+
+	//Выход
+	public function actionSignout()
+	{
+		Yii::$app->user->logout();
+		return $this->goHome();
+	}
 }
