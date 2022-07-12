@@ -38,7 +38,7 @@ AppAsset::register($this);
 				['label' => 'Вход', 'url' => ['/site/signin'], 'visible' => Yii::$app->user->isGuest == true],
 				['label' => 'Регистрация', 'url' => ['/site/signup'], 'visible' => Yii::$app->user->isGuest == true],
 				[
-					'label' => Yii::$app->user->identity->name,
+					'label' => Yii::$app->user->isGuest == false ? Yii::$app->user->identity->name : 'Unknown',
 					'items' => [
 						['label' => 'Профиль', 'url' => ['/user/index']],
 						['label' => 'Выход', 'url' => ['/site/signout']],
