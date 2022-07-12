@@ -53,8 +53,8 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		$user = User::find()->where(['rule' => 0]);
-		$model = Multimedia::find();
-		$models = Music::find();
+		$model = Multimedia::find()->all();
+		$models = Music::find()->all();
 		return $this->render('index', ['user' => $user, 'model' => $model, 'models' => $models,]);
 	}
 
