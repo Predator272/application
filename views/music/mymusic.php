@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="d-flex ml-3 w-75">'.$item->name.' / '.$item->executor.'</div>
                 <div class="ml-4 d-flex p-3">
                     <button type="button" class="btn btn-outline-success ml-4">▶</button>
-                    '.Html::a('+', ['music/add', 'id' => $item->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
+                    '.Html::a('-', ['music/del', 'id' => $item->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
                     <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
                 </div>
             </div>

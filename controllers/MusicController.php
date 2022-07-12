@@ -75,4 +75,7 @@ class MusicController extends Controller
             'model' => $mymusic,
         ]);
     }
+    public function actionDel($id){
+        echo 1;
+    }
 }
