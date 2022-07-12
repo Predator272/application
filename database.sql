@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 10 2022 г., 00:56
+-- Время создания: Июл 12 2022 г., 14:32
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.4.27
 
@@ -106,8 +106,7 @@ CREATE TABLE `mymusic` (
 CREATE TABLE `user` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(320) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `phone` varchar(18) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(320) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `rule` tinyint(3) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -116,8 +115,9 @@ CREATE TABLE `user` (
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `phone`, `password`, `rule`) VALUES
-(1, 'Администратор', 'admin@mail.ru', '', '8ddcff3a80f4189ca1c9d4d902c3c909', 1);
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `rule`) VALUES
+(1, 'Администратор', 'admin@mail.ru', '8ddcff3a80f4189ca1c9d4d902c3c909', 1),
+(6, 'Пользователь', 'user@mail.ru', '8ddcff3a80f4189ca1c9d4d902c3c909', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -173,8 +173,7 @@ ALTER TABLE `mymusic`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `phone` (`phone`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -220,7 +219,7 @@ ALTER TABLE `mymusic`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
