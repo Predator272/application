@@ -16,9 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </button>
       </div>
       <div class="modal-body">
-        <p>Пользователь 1</p>
-        <p>Пользователь 2</p>
-        <p>Пользователь 3</p>
+        <?php 
+            foreach ($user as $item) {
+                echo $item->name;
+            }
+        ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>

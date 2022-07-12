@@ -40,6 +40,7 @@ class MusicController extends Controller
             $model = Music::find()->where(['idUser' => $user->id])->all();
     
             return $this->render('index', [
+                'user' => $user,
                 'model' => $model,
             ]);
         }
