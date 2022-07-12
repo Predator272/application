@@ -37,7 +37,7 @@ class MusicController extends Controller
             return $this->goHome();
         }else {
             $user = User::find()->where(['rule' => 0])->all();
-            $model = Music::find()->where(['idUser' => Yii::$app->user->identity->id])->all();
+            $model = Music::find()->all();
     
             return $this->render('index', [
                 'user' => $user,

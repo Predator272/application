@@ -32,12 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 
-<div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
-	<?= Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded ml-3', 'width' => '50']) ?>
-    <div class="d-flex ml-3 w-75">Название/исполнитель</div>
-    <div class="ml-4 d-flex p-3">
-        <button type="button" class="btn btn-outline-success ml-4">▶</button>
-        <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
-	</div>
+<?php 
+    foreach ($model as $music) {
+        echo '
+        <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
+            '.Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded ml-3', 'width' => '50']).'
+            <div class="d-flex ml-3 w-75">'.$music->name.' / '.$music->executor.'</div>
+            <div class="ml-4 d-flex p-3">
+                <button type="button" class="btn btn-outline-success ml-4">▶</button>
+                <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
+	        </div>
+        </div>
+        ';
+    }
+?>
 
-</div>
