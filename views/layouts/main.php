@@ -1,8 +1,11 @@
 <?php
 
 use app\assets\AppAsset;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use yii\bootstrap4\Html;
+use yii\bootstrap4\NavBar;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\Breadcrumbs;
+use app\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -21,24 +24,40 @@ AppAsset::register($this);
 
 <body>
 	<?php $this->beginBody() ?>
-	<header>
-		<div class="menu">
-			<a href="<?= Yii::$app->homeUrl ?>"><img src="<?= Url::toRoute(['/favicon.ico']) ?>" alt=""><?= Yii::$app->name ?></a>
 
-			<?php if (Yii::$app->user->isGuest) { ?>
-				<a href="<?= Url::toRoute(['site/signup']) ?>">Регистрация</a>
-				<a href="<?= Url::toRoute(['site/signin']) ?>">Вход</a>
-			<?php } else { ?>
-				<a href="<?= Url::toRoute(['user/index']) ?>">Профиль</a>
-				<a href="<?= Url::toRoute(['site/signout']) ?>">Выход</a>
-			<?php } ?>
-		</div>
+	<header>
+		<?php NavBar::begin([
+			'brandLabel' => Html::img(['/favicon.ico'], ['class' => 'mr-2', 'width' => 24, 'height' => 24]) . Yii::$app->name,
+			'brandUrl' => Yii::$app->homeUrl,
+			'brandOptions' => ['class' => 'd-flex align-items-center'],
+			'options' => ['class' => 'navbar navbar-expand-md navbar-light bg-white border-bottom'],
+		]); ?>
+		<?= Nav::widget([
+			'options' => ['class' => 'navbar-nav ml-auto'],
+			'items' => [
+				['label' => 'Вход', 'url' => ['/site/signin'], 'visible' => Yii::$app->user->isGuest == true],
+				['label' => 'Регистрация', 'url' => ['/site/signup'], 'visible' => Yii::$app->user->isGuest == true],
+				[
+					'label' => Yii::$app->user->identity->name,
+					'items' => [
+						['label' => 'Профиль', 'url' => ['/user/index']],
+						['label' => 'Выход', 'url' => ['/site/signout']],
+					],
+					'visible' => Yii::$app->user->isGuest == false
+				]
+			]
+		]) ?>
+		<?php NavBar::end(); ?>
 	</header>
+
 	<main>
-		<?= $content ?>
+		<div class="container pt-3">
+			<?= Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], 'options' => ['class' => 'breadcrumb border bg-white']]) ?>
+			<?= Alert::widget() ?>
+			<?= $content ?>
+		</div>
 	</main>
-	<footer>
-	</footer>
+
 	<?php $this->endBody() ?>
 </body>
 

@@ -17,14 +17,13 @@ $config = [
 	'components' => [
 		'request' => [
 			'cookieValidationKey' => 'randomstring',
-			'enableCsrfValidation' => false,
 		],
 		'cache' => [
 			'class' => 'yii\caching\FileCache',
 		],
 		'user' => [
 			'identityClass' => 'app\models\User',
-			'enableAutoLogin' => true,
+			'enableAutoLogin' => false,
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
