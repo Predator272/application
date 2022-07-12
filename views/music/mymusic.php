@@ -2,6 +2,7 @@
 
 use yii\bootstrap4\Html;
 use yii\helpers\Url;
+use app\models\Music;
 
 $this->title = 'Музыка';
 $this->params['breadcrumbs'][] = $this->title;
@@ -39,19 +40,20 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php 
 
     foreach ($model as $music) {
-
-    echo '
-        <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
-            '.Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded ml-3', 'width' => '50']).'
-            <div class="d-flex ml-3 w-75">'.$music->name.' / '.$music->executor.'</div>
-            <div class="ml-4 d-flex p-3">
-                <button type="button" class="btn btn-outline-success ml-4">▶</button>
-                '.Html::a('+', ['music/add', 'id' => $music->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
-                <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
+        $baba = Music::find()->where(['id' => $music->idMusic])->one();
+        foreach ($baba as $item) {
+            echo '
+            <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
+                '.Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded ml-3', 'width' => '50']).'
+                <div class="d-flex ml-3 w-75">'.$item->name.' / '.$item->executor.'</div>
+                <div class="ml-4 d-flex p-3">
+                    <button type="button" class="btn btn-outline-success ml-4">▶</button>
+                    '.Html::a('+', ['music/add', 'id' => $item->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
+                    <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
+                </div>
             </div>
-        </div>
-    ';
-        
+        ';
+        }
     }
 ?>
 

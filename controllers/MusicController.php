@@ -8,6 +8,7 @@ use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
 use app\models\User;
 use app\models\Music;
+use app\models\Mymusic;
 
 class MusicController extends Controller
 {
@@ -52,16 +53,26 @@ class MusicController extends Controller
             return $this->goHome();
         }else {
             $user = User::find()->where(['rule' => 0])->all();
-            $model = Music::find()->where(['idUser' => Yii::$app->user->id])->all();
+            $model = Mymusic::find()->where(['idUser' => Yii::$app->user->id])->all();
     
-            return $this->render('index', [
+            return $this->render('mymusic', [
                 'user' => $user,
                 'model' => $model,
             ]);
         }
 	}
 
-    public function actionAdd(){
-        $mymusic = Mymusic
+    public function actionAdd($id){
+        $mymusic = new Mymusic;
+        $mymusic->idMusic = $id;
+        $mymusic->idUser = Yii::$app->user->id;
+        $mymusic->save();
+        $user = User::find()->where(['rule' => 0])->all();
+
+
+        return $this->render('mymusic', [
+            'user' => $user,
+            'model' => $mymusic,
+        ]);
     }
 }
