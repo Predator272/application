@@ -67,7 +67,18 @@ $this->title = 'Главная';
     </div>
   </div>
   <h4 id="list-item-2">Пункт 2</h4>
-  <p>...</p>
+  <?php
+  foreach ($model as $media) {
+        echo '
+        <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
+            '.$media->idUser.'
+            <div class="d-flex ml-3 w-75">'.$media->name.'  '.$media->time.'</div>
+            <img src='.$media->Img.' style="max-width:200px;"> 
+            
+        </div>
+        ';
+    }
+    ?>
   <h4 id="list-item-3">Пункт 3</h4>
   <p>...</p>
   <h4 id="list-item-4">Пункт 4</h4>
