@@ -10,8 +10,11 @@ use yii\data\ActiveDataProvider;
 use app\models\User;
 use app\models\Login;
 
+
+
 class SiteController extends Controller
 {
+	
 	public function behaviors()
 	{
 		return [
@@ -49,10 +52,25 @@ class SiteController extends Controller
 	//Главная страница
 	public function actionIndex()
 	{
+
+
+		if (Yii::$app->user->isGuest) {
+			return $this->redirect(['signup']);
+        }else {
+       
+           
+    
+            return $this->render('index', [
+                
+                
+            ]);
+        }
+
 		$query = User::find();
 		$dataProvider = new ActiveDataProvider(['query' => $query]);
 
 		return $this->render('index', ['dataProvider' => $dataProvider]);
+
 	}
 
 	//Регистрация
