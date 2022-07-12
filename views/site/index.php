@@ -73,7 +73,7 @@ $this->title = 'Главная';
         <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
             '.$media->idUser.'
             <div class="d-flex ml-3 w-75">'.$media->name.'  '.$media->time.'</div>
-            <div >'.$media->Img.' </div>
+            <img src='.$media->Img.' style="max-width:200px;"> 
             
         </div>
         ';
