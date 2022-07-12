@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
+use yii\data\ActiveDataProvider;
 use app\models\User;
 use app\models\Login;
 
@@ -52,9 +53,16 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 
+
 		return $this->render('index',[
            
         ]);
+
+		$query = User::find();
+		$dataProvider = new ActiveDataProvider(['query' => $query]);
+
+		return $this->render('index', ['dataProvider' => $dataProvider]);
+
 	}
 
 	//Регистрация

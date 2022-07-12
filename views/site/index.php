@@ -46,6 +46,7 @@ $this->title = 'Главная';
 
 
 </form>
+
 </section> -->
 <div id="list-example" class="list-group" style="max-width: 300px;">
   <a class="list-group-item list-group-item-action" href="#list-item-1">Пункт 1</a>
@@ -74,3 +75,7 @@ $this->title = 'Главная';
 </div>
     </div>
 </div>
+=======
+</section>
+</div>
+
