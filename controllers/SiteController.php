@@ -54,9 +54,17 @@ class SiteController extends Controller
 	{
 
 
-		return $this->render('index',[
+		if (Yii::$app->user->isGuest) {
+			return $this->redirect(['signup']);
+        }else {
+       
            
-        ]);
+    
+            return $this->render('index', [
+                
+                
+            ]);
+        }
 
 		$query = User::find();
 		$dataProvider = new ActiveDataProvider(['query' => $query]);
