@@ -9,8 +9,7 @@ use yii\web\Controller;
 use yii\data\ActiveDataProvider;
 use app\models\User;
 use app\models\Login;
-
-
+use app\models\Multimedia;
 
 class SiteController extends Controller
 {
@@ -58,11 +57,13 @@ class SiteController extends Controller
 			return $this->redirect(['signup']);
         }else {
        
-           
+            $user = User::find()->where(['rule' => 0])->all();
+            $model = Multimedia::find()->all();
+    
     
             return $this->render('index', [
-                
-                
+				'user' => $user,
+                'model' => $model,
             ]);
         }
 
