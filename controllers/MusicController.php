@@ -45,4 +45,23 @@ class MusicController extends Controller
             ]);
         }
 	}
+
+    public function actionMymusic()
+	{
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }else {
+            $user = User::find()->where(['rule' => 0])->all();
+            $model = Music::find()->where(['idUser' => Yii::$app->user->id])->all();
+    
+            return $this->render('index', [
+                'user' => $user,
+                'model' => $model,
+            ]);
+        }
+	}
+
+    public function actionAdd(){
+        $mymusic = Mymusic
+    }
 }
