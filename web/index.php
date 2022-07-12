@@ -1,6 +1,5 @@
 <?php
 
-// comment out the following two lines when deployed to production
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
@@ -10,6 +9,11 @@ require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
 $config = [
 	'id' => 'basic',
 	'basePath' => dirname(__DIR__),
+	'bootstrap' => ['log'],
+	'aliases' => [
+		'@bower' => '@vendor/bower-asset',
+		'@npm'   => '@vendor/npm-asset',
+	],
 	'components' => [
 		'request' => [
 			'cookieValidationKey' => 'randomstring',
@@ -20,7 +24,7 @@ $config = [
 		],
 		'user' => [
 			'identityClass' => 'app\models\User',
-			'enableAutoLogin' => false,
+			'enableAutoLogin' => true,
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
@@ -36,7 +40,7 @@ $config = [
 		],
 		'db' => [
 			'class' => 'yii\db\Connection',
-			'dsn' => 'mysql:host=sas2001v.beget.tech; dbname=sas2001v_s',
+			'dsn' => 'mysql:host=sas2001v.beget.tech;dbname=sas2001v_s',
 			'username' => 'sas2001v_s',
 			'password' => 'sas2003!',
 			'charset' => 'utf8',
@@ -45,17 +49,15 @@ $config = [
 			'enablePrettyUrl' => true,
 			'showScriptName' => false,
 			'rules' => [
-				'<action>' => 'site/<action>'
+				'<action>' => 'site/<action>',
 			],
 		],
-
 	],
 	'name' => 'Telegram',
 	'language' => 'ru',
 ];
 
 if (YII_ENV_DEV) {
-	// configuration adjustments for 'dev' environment
 	$config['bootstrap'][] = 'debug';
 	$config['modules']['debug'] = [
 		'class' => 'yii\debug\Module',
