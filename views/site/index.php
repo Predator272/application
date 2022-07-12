@@ -98,7 +98,7 @@ $this->title = 'Главная';
 </div>
     </div>
 </div>
-=======
+
 </section>
 </div>
 
