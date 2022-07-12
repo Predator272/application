@@ -51,13 +51,7 @@ class MusicController extends Controller
 	{
 
         if($id == 'Нет'){
-            if (Yii::$app->user->isGuest) {
-                return $this->goHome();
-            }else {
-                
-        
-                
-            }
+            
         }else {
             $mymusic = new Mymusic;
             $mymusic->idMusic = $id;
