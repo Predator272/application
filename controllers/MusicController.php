@@ -47,32 +47,43 @@ class MusicController extends Controller
         }
 	}
 
-    public function actionMymusic()
+    public function actionMymusic($id = 'Нет')
 	{
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
+
+        if($id == 'Нет'){
+            if (Yii::$app->user->isGuest) {
+                return $this->goHome();
+            }else {
+                
+        
+                
+            }
         }else {
-            $user = User::find()->where(['rule' => 0])->all();
-            $model = Mymusic::find()->where(['idUser' => Yii::$app->user->id])->all();
-    
-            return $this->render('mymusic', [
-                'user' => $user,
-                'model' => $model,
-            ]);
+            $mymusic = new Mymusic;
+            $mymusic->idMusic = $id;
+            $mymusic->idUser = Yii::$app->user->id;
+            $mymusic->save();
         }
+        $music = Mymusic::find()->where(['idUser' => Yii::$app->user->id])->all();
+        $user = User::find()->where(['rule' => 0])->all();
+        return $this->render('mymusic', [
+            'user' => $user,
+            'model' => $music,
+        ]);
+
+
+        
 	}
 
     public function actionAdd($id){
-        $mymusic = new Mymusic;
-        $mymusic->idMusic = $id;
-        $mymusic->idUser = Yii::$app->user->id;
-        $mymusic->save();
+        
+        
         $user = User::find()->where(['rule' => 0])->all();
 
 
-        return $this->render('mymusic', [
+        return $this->render('index', [
             'user' => $user,
-            'model' => $mymusic,
+            'model' => $music,
         ]);
     }
     public function actionDel($id){
