@@ -9,8 +9,11 @@ use yii\web\Controller;
 use app\models\User;
 use app\models\Login;
 
+
+
 class SiteController extends Controller
 {
+	
 	public function behaviors()
 	{
 		return [
@@ -48,7 +51,10 @@ class SiteController extends Controller
 	//Главная страница
 	public function actionIndex()
 	{
-		return $this->render('index');
+
+		return $this->render('index',[
+           
+        ]);
 	}
 
 	//Регистрация
