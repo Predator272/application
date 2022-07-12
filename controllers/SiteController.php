@@ -14,7 +14,7 @@ use app\models\Music;
 
 class SiteController extends Controller
 {
-	
+
 	public function behaviors()
 	{
 		return [
@@ -52,29 +52,10 @@ class SiteController extends Controller
 	//Главная страница
 	public function actionIndex()
 	{
-
-
-		if (Yii::$app->user->isGuest) {
-			return $this->redirect(['signup']);
-        }else {
-       
-            $user = User::find()->where(['rule' => 0])->all();
-            $model = Multimedia::find()->all();
-			$models = Music::find()->all();
-    
-    
-            return $this->render('index', [
-				'user' => $user,
-                'model' => $model,
-				'models' => $models,
-            ]);
-        }
-
-		$query = User::find();
-		$dataProvider = new ActiveDataProvider(['query' => $query]);
-
-		return $this->render('index', ['dataProvider' => $dataProvider]);
-
+		$user = User::find()->where(['rule' => 0]);
+		$model = Multimedia::find();
+		$models = Music::find();
+		return $this->render('index', ['user' => $user, 'model' => $model, 'models' => $models,]);
 	}
 
 	//Регистрация
