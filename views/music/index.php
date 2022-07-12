@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php 
             foreach ($user as $item) {
                 echo $item->name;
+                echo '</br>';
             }
         ?>
       </div>

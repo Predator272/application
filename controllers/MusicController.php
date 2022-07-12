@@ -36,8 +36,8 @@ class MusicController extends Controller
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }else {
-            $user = User::findOne(Yii::$app->user->identity->id);
-            $model = Music::find()->where(['idUser' => $user->id])->all();
+            $user = User::find()->where(['rule' => 0])->all();
+            $model = Music::find()->where(['idUser' => Yii::$app->user->identity->id])->all();
     
             return $this->render('index', [
                 'user' => $user,
