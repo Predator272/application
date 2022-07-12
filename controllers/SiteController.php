@@ -11,6 +11,8 @@ use app\models\User;
 use app\models\Login;
 use app\models\Multimedia;
 use app\models\Music;
+use app\models\File;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -97,5 +99,12 @@ class SiteController extends Controller
 	{
 		Yii::$app->user->logout();
 		return $this->goHome();
+	}
+
+	//Получение файла
+	public function actionFile($id)
+	{
+		$model = File::findOne($id);
+		return $model->data;
 	}
 }

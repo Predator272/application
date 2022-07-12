@@ -12,7 +12,7 @@ use Yii;
  * @property string $time
  * @property string $name
  * @property int $likes
- * @property string|null $Img
+ * @property resource $file
  *
  * @property User $idUser0
  */
@@ -32,10 +32,11 @@ class Multimedia extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUser', 'name'], 'required'],
+            [['idUser', 'name', 'file'], 'required'],
             [['idUser', 'likes'], 'integer'],
             [['time'], 'safe'],
-            [['name', 'Img'], 'string', 'max' => 255],
+            [['file'], 'string'],
+            [['name'], 'string', 'max' => 255],
             [['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
         ];
     }
@@ -51,7 +52,7 @@ class Multimedia extends \yii\db\ActiveRecord
             'time' => 'Time',
             'name' => 'Name',
             'likes' => 'Likes',
-            'Img' => 'Img',
+            'file' => 'File',
         ];
     }
 
