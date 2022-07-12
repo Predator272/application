@@ -79,8 +79,20 @@ $this->title = 'Главная';
         ';
     }
     ?>
+    
   <h4 id="list-item-3">Пункт 3</h4>
-  <p>...</p>
+  <?php
+    foreach ($models as $music) {
+          echo '
+          <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
+              '.$media->name.'
+              <div class="d-flex ml-3 w-75">'.$media->name.'  '.$media->execute.'</div>
+          
+              
+          </div>
+          ';
+      }
+      ?>
   <h4 id="list-item-4">Пункт 4</h4>
   <p>...</p>
 </div>

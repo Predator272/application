@@ -10,6 +10,7 @@ use yii\data\ActiveDataProvider;
 use app\models\User;
 use app\models\Login;
 use app\models\Multimedia;
+use app\models\Music;
 
 class SiteController extends Controller
 {
@@ -59,11 +60,13 @@ class SiteController extends Controller
        
             $user = User::find()->where(['rule' => 0])->all();
             $model = Multimedia::find()->all();
+			$models = Music::find()->all();
     
     
             return $this->render('index', [
 				'user' => $user,
                 'model' => $model,
+				'models' => $models,
             ]);
         }
 
