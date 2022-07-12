@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?=  Html::a('Моя музыка', Url::toRoute('music/mymusic', $schema = true), $options = ['class' => 'btn btn-outline-primary mb-3 mr-3'])?>
 </div>
 <?php 
-
-    foreach ($model as $music) {
+    if ($model){
+      foreach ($model as $music) {
         $baba = Music::find()->where(['id' => $music->idMusic])->one();
         foreach ($baba as $item) {
             echo '
@@ -54,6 +54,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         ';
         }
+    }
+    }else {
+      echo 'У вас нету музыки';
     }
 ?>
 
