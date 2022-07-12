@@ -55,7 +55,7 @@ $this->title = 'Главная';
 
 
   
-  
+  /// бар
 
 <div id="list-example" class="list-group" style="max-width: 150px; position:relative; left:750px;">
 	<?= Html::a('Музыка', ['/music/index'], ['class' => 'list-group-item list-group-item-action']) ?>
@@ -67,6 +67,7 @@ $this->title = 'Главная';
 <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="position: relative; left:00px; bottom:200px; max-width:500px;">
 	
 	<div class="card" style="width: 501px;">
+    
 		<img class="card-img-top" src="" alt="Card image cap">
 		<div class="card-body">
 			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
