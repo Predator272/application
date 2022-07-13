@@ -55,16 +55,12 @@ $this->title = 'Главная';
 
 <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="position: relative; bottom:0px; left:250px; max-width:600px;">
 
-
-
-
-	/// бар
-
-	<div id="list-example" class="list-group" style="max-width: 150px; position:relative; left:750px;">
+	<div id="list-example" class="list-group" style="max-width: 150px; position:relative; right:250px;">
 		<?= Html::a('Музыка', ['/music/index'], ['class' => 'list-group-item list-group-item-action']) ?>
-		<a class="list-group-item list-group-item-action" href="#list-item-1">Пункт 1</a>
-		<a class="list-group-item list-group-item-action" href="#list-item-2">Пункт 2</a>
-		<a class="list-group-item list-group-item-action" href="#list-item-3">Пункт 3</a>
+		<?= Html::a('Друзья', ['/user/index'], ['class' => 'list-group-item list-group-item-action']) ?>
+		<?= Html::a('Профиль', ['/user/index'], ['class' => 'list-group-item list-group-item-action']) ?>
+		<?= Html::a('Сообщения', ['/user/index'], ['class' => 'list-group-item list-group-item-action']) ?>
+		<?= Html::a('Поделиться фото', ['/photo/index'], ['class' => 'list-group-item list-group-item-action']) ?>
 		<a class="list-group-item list-group-item-action" href="#list-item-4">Пункт 4</a>
 	</div>
 	<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="position: relative; left:00px; bottom:200px; max-width:500px;">
