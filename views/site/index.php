@@ -14,50 +14,11 @@ $this->title = 'Главная';
 	</div>
 	<?php ActiveForm::end(); ?>
 </div>
-
-<!-- 
-<div class="container-fluid">
-<section style="position: relative; left:940px; top:100px; background:#dedede; width:120px;">
-<div class="form-check pb-2" >
-
-<form method="POST">
-
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-    Популярное
-  </label>
-</div>
-<div class="form-check pb-2">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label" for="flexRadioDefault2">
-   Свежее
-  </label>
-</div>
-
-<div class="form-check  pb-2">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label" for="flexRadioDefault2">
-   Свежее
-  </label>
-</div>
-
-<div class="form-check  pb-2">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label" for="flexRadioDefault2">
-   Свежее
-  </label>
-</div>
-
-
-</form>
-
-</section> -->
-
 <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="position: relative; bottom:0px; left:250px; max-width:600px;">
 
 	<div id="list-example" class="list-group" style="max-width: 150px; position:relative; right:250px;">
 		<?= Html::a('Музыка', ['/music/index'], ['class' => 'list-group-item list-group-item-action']) ?>
-		<?= Html::a('Друзья', ['/user/index'], ['class' => 'list-group-item list-group-item-action']) ?>
+		<?= Html::a('Друзья', ['/friend/index'], ['class' => 'list-group-item list-group-item-action']) ?>
 		<?= Html::a('Профиль', ['/user/index'], ['class' => 'list-group-item list-group-item-action']) ?>
 		<?= Html::a('Сообщения', ['/user/index'], ['class' => 'list-group-item list-group-item-action']) ?>
 		<?= Html::a('Поделиться фото', ['/photo/index'], ['class' => 'list-group-item list-group-item-action']) ?>
