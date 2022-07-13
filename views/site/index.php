@@ -1,9 +1,19 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\bootstrap4\ActiveForm;
 
 $this->title = 'Главная';
 ?>
+
+<div class="border rounded bg-white px-3 pt-3 mb-3">
+	<?php $form = ActiveForm::begin(); ?>
+	<?= $form->field($model, 'name')->fileInput(); ?>
+	<div class="form-group">
+		<?= Html::submitButton('Загрузить фотографию', ['class' => 'btn btn-success']) ?>
+	</div>
+	<?php ActiveForm::end(); ?>
+</div>
 
 <!-- 
 <div class="container-fluid">

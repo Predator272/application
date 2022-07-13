@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use app\models\User;
 use app\models\Login;
 use app\models\Photo;
@@ -52,7 +53,27 @@ class SiteController extends Controller
 	{
 		$photo = Photo::find()->all();
 		$music = Music::find()->all();
-		return $this->render('index', ['photo' => $photo, 'music' => $music]);
+
+		$model = new Photo();
+		if ($this->request->isPost) {
+			if ($model->load($this->request->post()) && $file = UploadedFile::getInstance($model, 'name')) {
+				$model->idUser = Yii::$app->user->identity->id;
+				$model->name = $file->name;
+				$model->data = file_get_contents($file->tempName);
+				if ($model->save()) {
+					Yii::$app->session->setFlash('success', 'Файл успешно загружен');
+				} else {
+					Yii::$app->session->setFlash('error', 'Неудалось загрузить файл');
+				}
+			} else {
+				Yii::$app->session->setFlash('error', 'Неудалось загрузить файл');
+			}
+			return $this->goHome();
+		} else {
+			$model->loadDefaultValues();
+		}
+
+		return $this->render('index', ['model' => $model, 'photo' => $photo, 'music' => $music]);
 	}
 
 	//Регистрация
