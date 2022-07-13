@@ -2,13 +2,6 @@
 
 use yii\bootstrap4\Html;
 
-use yii\bootstrap4\NavBar;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\Breadcrumbs;
-use app\widgets\Alert;
-use yii\bootstrap4\ActiveForm;
-
-
 $this->title = 'Главная';
 ?>
 
@@ -54,66 +47,48 @@ $this->title = 'Главная';
 
 
 
-  
-  /// бар
 
-<div id="list-example" class="list-group" style="max-width: 150px; position:relative; left:750px;">
-	<?= Html::a('Музыка', ['/music/index'], ['class' => 'list-group-item list-group-item-action']) ?>
-	<a class="list-group-item list-group-item-action" href="#list-item-1">Пункт 1</a>
-	<a class="list-group-item list-group-item-action" href="#list-item-2">Пункт 2</a>
-	<a class="list-group-item list-group-item-action" href="#list-item-3">Пункт 3</a>
-	<a class="list-group-item list-group-item-action" href="#list-item-4">Пункт 4</a>
-</div>
-<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="position: relative; left:00px; bottom:200px; max-width:500px;">
-	
-	<div class="card" style="width: 501px;">
-    
-		<img class="card-img-top" src="" alt="Card image cap">
-		<div class="card-body">
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-			<a href="#" class="btn btn-primary mt-1 ">оставить комментарий</a>
-			<a href="#" class="btn btn-primary mt-1 " style="margin-left:57px">поставить лайк</a>
+	/// бар
 
-		</div>
+	<div id="list-example" class="list-group" style="max-width: 150px; position:relative; left:750px;">
+		<?= Html::a('Музыка', ['/music/index'], ['class' => 'list-group-item list-group-item-action']) ?>
+		<a class="list-group-item list-group-item-action" href="#list-item-1">Пункт 1</a>
+		<a class="list-group-item list-group-item-action" href="#list-item-2">Пункт 2</a>
+		<a class="list-group-item list-group-item-action" href="#list-item-3">Пункт 3</a>
+		<a class="list-group-item list-group-item-action" href="#list-item-4">Пункт 4</a>
 	</div>
-	
+	<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="position: relative; left:00px; bottom:200px; max-width:500px;">
 
-<?php
-	foreach ($model as $media) {
-		echo '
+		<div class="card" style="width: 501px;">
 
-        <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
-            ' . $media->idUser . '
-            <div class="d-flex ml-3 w-75">' . $media->name . '  ' . $media->time . '</div>
-            <img src=' . $media->Img . ' style="max-width:200px;"> 
-            
-        </div>
-        ';
+			<img class="card-img-top" src="" alt="Card image cap">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+				<a href="#" class="btn btn-primary mt-1 ">оставить комментарий</a>
+				<a href="#" class="btn btn-primary mt-1 " style="margin-left:57px">поставить лайк</a>
 
-    }
-    ?>
-    
-  <h4 id="list-item-3"></h4>
-  
+			</div>
+		</div>
 
-	
-	<?php
-	foreach ($models as $music) {
-		echo '
+		<?php foreach ($photo as $item) { ?>
+			<div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
+				<?= $item->idUser ?>
+				<div class="d-flex ml-3 w-75"><?= $item->name ?> <?= $item->time ?></div>
+				<?= Html::img(['/photo', 'id' => $item->id], ['width' => '200']) ?>
+			</div>
+		<?php } ?>
 
-          <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
-              ' . $music->name . '
-              <div class="d-flex ml-3 w-75">' . $music->name . '  ' . $music->executor . '</div>
-          
-              
-          </div>
-          ';
+		<h4 id="list-item-3"></h4>
 
-      }
-      ?>
-  
-</div>
+		<?php foreach ($music as $item) { ?>
+			<div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
+				<?= $item->name ?>
+				<div class="d-flex ml-3 w-75"><?= $item->name ?> <?= $item->executor ?></div>
+			</div>
+		<?php } ?>
 
-</section>
+	</div>
+
+	</section>
 </div>

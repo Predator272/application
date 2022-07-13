@@ -6,17 +6,13 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
-use yii\data\ActiveDataProvider;
 use app\models\User;
 use app\models\Login;
-use app\models\Multimedia;
+use app\models\Photo;
 use app\models\Music;
-use app\models\File;
-use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
-
 	public function behaviors()
 	{
 		return [
@@ -25,7 +21,7 @@ class SiteController extends Controller
 				'denyCallback' => function ($rule, $action) {
 					throw new ForbiddenHttpException('Вам не разрешено производить данное действие.');
 				},
-				'only' => ['signup', 'signin', 'signout',],
+				'only' => ['signup', 'signin', 'signout'],
 				'rules' => [
 					[
 						'actions' => ['signup', 'signin'],
@@ -54,10 +50,9 @@ class SiteController extends Controller
 	//Главная страница
 	public function actionIndex()
 	{
-		$user = User::find()->where(['rule' => 0]);
-		$model = Multimedia::find()->all();
-		$models = Music::find()->all();
-		return $this->render('index', ['user' => $user, 'model' => $model, 'models' => $models,]);
+		$photo = Photo::find()->all();
+		$music = Music::find()->all();
+		return $this->render('index', ['photo' => $photo, 'music' => $music]);
 	}
 
 	//Регистрация
@@ -77,8 +72,6 @@ class SiteController extends Controller
 		return $this->render('signup', ['model' => $model]);
 	}
 
-
-	
 	//Вход
 	public function actionSignin()
 	{
@@ -101,10 +94,17 @@ class SiteController extends Controller
 		return $this->goHome();
 	}
 
-	//Получение файла
-	public function actionFile($id)
+	//Получение фотографии
+	public function actionPhoto($id)
 	{
-		$model = File::findOne($id);
+		$model = Photo::findOne($id);
+		return $model->data;
+	}
+
+	//Получение музыки
+	public function actionMusic($id)
+	{
+		$model = Music::findOne($id);
 		return $model->data;
 	}
 }

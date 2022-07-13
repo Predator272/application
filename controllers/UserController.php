@@ -31,22 +31,10 @@ class UserController extends Controller
 		];
 	}
 
+	//Профиль
 	public function actionIndex()
 	{
 		$model = User::findOne(Yii::$app->user->identity->id);
-
-		$file = new File();
-
-		if ($this->request->isPost) {
-			if ($file->load($this->request->post()) && $file->save()) {
-				Yii::$app->session->setFlash('success', 'Файл успешно загружен');
-			} else {
-				Yii::$app->session->setFlash('error', 'Неудалось загрузить файл');
-			}
-		} else {
-			$file->loadDefaultValues();
-		}
-
-		return $this->render('index', ['model' => $model, 'file' => $file]);
+		return $this->render('index', ['model' => $model]);
 	}
 }

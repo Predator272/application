@@ -5,25 +5,25 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "multimedia".
+ * This is the model class for table "photo".
  *
  * @property int $id
  * @property int $idUser
  * @property string $time
  * @property string $name
  * @property int $likes
- * @property resource $file
+ * @property resource $data
  *
  * @property User $idUser0
  */
-class Multimedia extends \yii\db\ActiveRecord
+class Photo extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'multimedia';
+        return 'photo';
     }
 
     /**
@@ -32,10 +32,10 @@ class Multimedia extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUser', 'name',], 'required'],
+            [['idUser', 'name', 'data'], 'required'],
             [['idUser', 'likes'], 'integer'],
             [['time'], 'safe'],
-           
+            [['data'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
         ];
@@ -52,7 +52,7 @@ class Multimedia extends \yii\db\ActiveRecord
             'time' => 'Time',
             'name' => 'Name',
             'likes' => 'Likes',
-            'file' => 'File',
+            'data' => 'Data',
         ];
     }
 
@@ -65,5 +65,4 @@ class Multimedia extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'idUser']);
     }
-    
 }
