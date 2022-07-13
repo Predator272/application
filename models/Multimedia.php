@@ -32,10 +32,10 @@ class Multimedia extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUser', 'name', 'file'], 'required'],
+            [['idUser', 'name',], 'required'],
             [['idUser', 'likes'], 'integer'],
             [['time'], 'safe'],
-            [['file'], 'string'],
+           
             [['name'], 'string', 'max' => 255],
             [['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
         ];
