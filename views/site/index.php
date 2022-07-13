@@ -24,7 +24,7 @@ $this->title = 'Главная';
 		</div>
 		<?php foreach ($photo as $item) { ?>
 			<div class="border rounded bg-white p-3 mb-3 d-flex">
-				<?= Html::img(['/photo', 'id' => $item->id], ['width' => '400']) ?>
+				<?= Html::img(['/photo', 'id' => $item->id], ['class' => 'img-fluid img-thumbnail', 'width' => '400']) ?>
 				<div class="ml-3"><?= $item->name ?> <?= $item->time ?></div>
 			</div>
 		<?php } ?>
