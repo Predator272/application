@@ -37,4 +37,14 @@ class UserController extends Controller
 		$model = User::findOne(Yii::$app->user->identity->id);
 		return $this->render('index', ['model' => $model]);
 	}
+
+	//поиск юзера не доделан
+	public function actionSearch(){
+		$model = new User();
+		$models = User::find()->all();
+			$searchModel = new User();
+			$dataProvider = $searchModel->search($this->request->queryParams);
+	
+			return $this->render('searchh');
+	}
 }

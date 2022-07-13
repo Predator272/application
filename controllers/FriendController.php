@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\models\Friend;
+use yii\data\ActiveDataProvider;
 use app\models\FriendSearch;
+use app\models\User;
 use yii\debug\models\timeline\Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -89,9 +91,25 @@ class FriendController extends Controller
 
    
     $model = new Friend();
-    return $this->render( 'search', [
-        'model' => $model,
-    ]);
+    $models = Friend::find()->all();
+        $searchModel = new FriendSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('search', [
+          
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'model' => $model,
+            'models' => $models,
+        ]);
+  }
+  public function actionUserSearch(){
+    $model = new Friend();
+    $models = User::find()->all();
+        $searchModel = new FriendSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('userSearch');
   }
    
     /**

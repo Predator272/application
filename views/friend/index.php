@@ -19,7 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Искать друзей', ['search'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Посмотреть всех друзей', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Искать пользователей', ['/user/userSearch'], ['class' => 'btn btn-success']) ?>
+   
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -32,10 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
           '.Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded ml-3', 'width' => '50']).'
           <div class="d-flex ml-3 w-75">'.$friend->id.' / '.$friend->id.'</div>
           <div class="ml-4 d-flex p-3">
-              <button type="button" class="btn btn-outline-success ml-4">▶</button>
-              '.Html::a('-', ['music/del', 'id' => $friend->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
-              <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
-          </div>
+              <button type="button" class="btn btn-outline-success ml-4">удалить</button>
+              
       </div>
       ';
     }
