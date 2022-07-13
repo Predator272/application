@@ -31,7 +31,7 @@ class Photo extends ActiveRecord
 			'id' => 'ID',
 			'idUser' => 'Id User',
 			'time' => 'Time',
-			'name' => 'Name',
+			'name' => 'Файл',
 			'likes' => 'Likes',
 			'data' => 'Data',
 		];
