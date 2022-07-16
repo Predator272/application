@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Friend;
 use yii\data\ActiveDataProvider;
 use app\models\FriendSearch;
+use app\models\UserSearch;
 use app\models\User;
 use yii\debug\models\timeline\Search;
 use yii\web\Controller;
@@ -103,13 +104,19 @@ class FriendController extends Controller
             'models' => $models,
         ]);
   }
-  public function actionUserSearch(){
-    $model = new Friend();
-    $models = User::find()->all();
-        $searchModel = new FriendSearch();
+  public function actionPoisk(){
+        $model = new User();
+        $model=User::find()->where(['id' => $model->id])->one();
+        $searchModel = new User();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('userSearch');
+        return $this->render('poisk', [
+          
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+           'model'=>$model,
+          
+        ]);
   }
    
     /**

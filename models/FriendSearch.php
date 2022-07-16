@@ -17,7 +17,7 @@ class FriendSearch extends Friend
     public function rules()
     {
         return [
-            [['id', 'idUser', 'idFriend'], 'integer'],
+            [['id', 'idUser', 'idFriend',], 'integer'],
         ];
     }
 

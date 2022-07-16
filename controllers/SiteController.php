@@ -76,6 +76,7 @@ class SiteController extends Controller
 		return $this->render('index', ['model' => $model, 'photo' => $photo, 'music' => $music]);
 	}
 
+
 	//Регистрация
 	public function actionSignup()
 	{

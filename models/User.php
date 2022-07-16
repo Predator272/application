@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -70,4 +70,34 @@ class User extends ActiveRecord implements IdentityInterface
 		}
 		return parent::beforeSave($insert);
 	}
+	public function search($params)
+    {
+        $query = User::find();
+
+        // add conditions that should always apply here
+
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+         
+           
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+        ]);
+
+        return $dataProvider;
+    }
 }

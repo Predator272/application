@@ -21,8 +21,8 @@ use yii\widgets\Pjax;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'idUser',
-            'idFriend',
+            'name',
+            'email',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

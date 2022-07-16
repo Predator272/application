@@ -8,6 +8,7 @@ use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
 use app\models\User;
 use app\models\File;
+use app\models\UserSearch;
 
 class UserController extends Controller
 {
@@ -42,9 +43,15 @@ class UserController extends Controller
 	public function actionSearch(){
 		$model = new User();
 		$models = User::find()->all();
-			$searchModel = new User();
+			$searchModel = new UserSearch();
 			$dataProvider = $searchModel->search($this->request->queryParams);
 	
-			return $this->render('searchh');
+			return $this->render('search', [
+			  
+				'dataProvider' => $dataProvider,
+				'searchModel' => $searchModel,
+				'model' => $model,
+				'models' => $models,
+			]);
 	}
 }

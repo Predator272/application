@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Искать друзей', ['search'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Искать пользователей', ['/user/userSearch'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Искать пользователей', ['poisk'], ['class' => 'btn btn-success']) ?>
    
     </p>
 
