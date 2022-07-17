@@ -105,20 +105,25 @@ class FriendController extends Controller
         ]);
   }
   public function actionPoisk(){
-        $model = new User();
-        $model=User::find()->where(['id' => $model->id])->one();
+       
+    $model = User::find()->all();
         $searchModel = new User();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        $models = User::find()->all();
         return $this->render('poisk', [
           
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
-           'model'=>$model,
+            'models' => $models,
+            'model'=>$model,
           
         ]);
   }
    
+  public function actionUp(){
+        
+    
+}
     /**
      * Updates an existing Friend model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -168,4 +173,5 @@ class FriendController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

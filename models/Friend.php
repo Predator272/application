@@ -23,6 +23,7 @@ class Friend extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'friend';
+        return 'user';
     }
 
     /**
@@ -36,6 +37,7 @@ class Friend extends \yii\db\ActiveRecord
             [['idUser', 'idFriend'], 'unique', 'targetAttribute' => ['idUser', 'idFriend']],
             [['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
             [['idFriend'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idFriend' => 'id']],
+      
         ];
     }
 
