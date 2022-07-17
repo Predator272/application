@@ -104,6 +104,7 @@ class FriendController extends Controller
             'models' => $models,
         ]);
   }
+  //yhgtfrdew
   public function actionPoisk(){
        
     $model = User::find()->all();
@@ -114,7 +115,9 @@ class FriendController extends Controller
           
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
+
             'models' => $models,
+
             'model'=>$model,
           
         ]);

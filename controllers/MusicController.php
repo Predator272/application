@@ -9,6 +9,7 @@ use yii\web\Controller;
 use app\models\User;
 use app\models\Music;
 use app\models\Mymusic;
+use yii\web\UploadedFile;
 
 class MusicController extends Controller
 {
@@ -69,11 +70,38 @@ class MusicController extends Controller
         
 	}
 
+    public function actionCreate(){
+
+
+        $model = new Music();
+        $user = User::find()->where(['id' => Yii::$app->user->id])->one();
+        
+
+        if ($model->load($this->request->post()) && $file = UploadedFile::getInstance($model, 'data')) {
+            $model->idUser = Yii::$app->user->identity->id;
+            $model->executor = $user->name;
+            $model->name = $file->name;
+            $model->data = file_get_contents($file->tempName);
+            if ($model->save()) {
+                $music = Music::find()->all();
+                $user = User::find()->all();
+                return $this->redirect('index');
+            } else {
+                Yii::$app->session->setFlash('error', 'Неудалось загрузить файл');
+            }
+        } else {
+			$model->loadDefaultValues();
+        }
+
+        return $this->render('create', [
+            'user' => $user,
+            'model' => $model,
+        ]);
+    }
+
     public function actionAdd($id){
         
-        
         $user = User::find()->where(['rule' => 0])->all();
-
 
         return $this->render('index', [
             'user' => $user,

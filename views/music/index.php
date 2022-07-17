@@ -35,9 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="d-flex">
     <?=  Html::a('Музыка', Url::toRoute('music/index', $schema = true), $options = ['class' => 'btn btn-outline-primary mb-3 mr-3'])?>
     <?=  Html::a('Моя музыка', Url::toRoute('music/mymusic', $schema = true), $options = ['class' => 'btn btn-outline-primary mb-3 mr-3'])?>
+    <?=  Html::a('Добавить музыку', Url::toRoute('music/create', $schema = true), $options = ['class' => 'btn btn-outline-primary mb-3 mr-3'])?>
+
 </div>
 <?php 
-
     foreach ($model as $music) {
 
     echo '
