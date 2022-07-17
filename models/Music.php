@@ -50,7 +50,7 @@ class Music extends \yii\db\ActiveRecord
             'idUser' => 'Id User',
             'name' => 'Название',
             'executor' => 'Исполнитель',
-            'data' => 'Добавить музыку (mp4,mp4):  '
+            'data' => 'Добавить музыку (mp3,mp4):  '
         ];
     }
 

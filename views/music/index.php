@@ -39,7 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 <?php 
-
     foreach ($model as $music) {
 
     echo '
