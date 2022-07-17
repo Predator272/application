@@ -114,7 +114,7 @@ class FriendController extends Controller
           
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
-           'model'=>$model,
+            'model'=>$model,
           
         ]);
   }

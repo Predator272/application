@@ -2,7 +2,7 @@
 
 use yii\bootstrap4\Html;
 use yii\helpers\Url;
-use app\models\Music;
+use yii\bootstrap4\ActiveForm;
 
 $this->title = 'Музыка';
 $this->params['breadcrumbs'][] = $this->title;
@@ -19,10 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
       <div class="modal-body">
         <?php 
-            foreach ($user as $item) {
-                echo $item->name;
-                echo '</br>';
-            }
+            // foreach ($user as $item) {
+            //     echo $item->name;
+            //     echo '</br>';
+            // }
         ?>
       </div>
       <div class="modal-footer">
@@ -38,24 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?=  Html::a('Моя музыка', Url::toRoute('music/mymusic', $schema = true), $options = ['class' => 'btn btn-outline-primary mb-3 mr-3'])?>
     <?=  Html::a('Добавить музыку', Url::toRoute('music/create', $schema = true), $options = ['class' => 'btn btn-outline-primary mb-3 mr-3'])?>
 </div>
-<?php 
-    if ($model){
-      foreach ($model as $music) {
-        $baba = Music::find()->where(['id' => $music->idMusic])->one();
-        echo '
-        <div class="border rounded bg-white mb-3 d-flex align-items-center justify-content-between">
-            '.Html::img(['img/avatar.png'], ['class' => 'img-fluid rounded ml-3', 'width' => '50']).'
-            <div class="d-flex ml-3 w-75">'.$baba->name.' / '.$baba->executor.'</div>
-            <div class="ml-4 d-flex p-3">
-                <button type="button" class="btn btn-outline-success ml-4">▶</button>
-                '.Html::a('-', ['music/del', 'id' => $baba->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
-                <button type="button" class="btn btn-outline-success ml-4" data-toggle="modal" data-target="#exampleModalLong">Поделиться</button>
-            </div>
-        </div>
-        ';
-      }
-    }else {
-      echo 'У вас нету музыки';
-    }
-?>
 
+<?php $form = ActiveForm::begin(); ?>
+	<?= $form->field($model, 'data')->fileInput() ?>
+	<div class="form-group">
+		<?= Html::submitButton('Добавить', ['class' => 'btn btn-success']) ?>
+	</div>
+<?php ActiveForm::end(); ?>

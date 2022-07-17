@@ -34,7 +34,8 @@ class Music extends \yii\db\ActiveRecord
         return [
             [['idUser', 'name', 'executor'], 'required'],
             [['idUser'], 'integer'],
-            [['name', 'executor'], 'string', 'max' => 255],
+			[['name', 'executor'], 'string', 'max' => 255],
+			[['data'], 'file', 'extensions' => 'mp3, mp4'],
             [['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
         ];
     }
@@ -47,8 +48,9 @@ class Music extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'idUser' => 'Id User',
-            'name' => 'Name',
-            'executor' => 'Executor',
+            'name' => 'Название',
+            'executor' => 'Исполнитель',
+            'data' => 'Добавить музыку (mp4,mp4):  '
         ];
     }
 
