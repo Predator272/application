@@ -41,8 +41,18 @@ class FriendController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($id = 'Нет')
     { 
+
+        if($id == 'Нет'){
+          
+        }else {
+            $models = new Friend;
+            $models->idFriend = $id;
+            $models->idUser = Yii::$app->user->id;
+            $models->save();
+        }
+
         $models = Friend::find()->all();
         $searchModel = new FriendSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
