@@ -4,7 +4,7 @@ namespace app\models;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use Yii;
 class User extends ActiveRecord implements IdentityInterface
 {
 	public function rules()
@@ -28,6 +28,7 @@ class User extends ActiveRecord implements IdentityInterface
 		];
 	}
 
+	
 	public static function findIdentity($id)
 	{
 		return static::findOne($id);

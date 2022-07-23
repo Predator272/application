@@ -122,9 +122,10 @@ class FriendController extends Controller
             'model'=>$model,
           
         ]);
+        
       
   }
-  public function actionMymusic($id = 'Нет')
+  public function actionFriend($id = 'Нет')
   {
 
       if($id == 'Нет'){
@@ -148,7 +149,7 @@ class FriendController extends Controller
   }
   public function actionAdd($id){
         
-    $user = User::find()->where(['rule' => 0])->all();
+    $user = Friend::find()->where(['rule' => 0])->all();
 
     return $this->render('index', [
         'user' => $user,

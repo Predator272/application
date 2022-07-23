@@ -42,4 +42,5 @@ $this->params['breadcrumbs'][] = $this->title;
     echo 'У вас нету друзей';
   }
 ?>
+
 </div>
