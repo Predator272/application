@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Friend;
+use Yii;
 use yii\data\ActiveDataProvider;
 use app\models\FriendSearch;
 use app\models\UserSearch;
@@ -121,8 +122,40 @@ class FriendController extends Controller
             'model'=>$model,
           
         ]);
+      
   }
-   
+  public function actionMymusic($id = 'Нет')
+  {
+
+      if($id == 'Нет'){
+          
+      }else {
+          $models = new Friend;
+          $models->idFriend = $id;
+          $models->idUser = Yii::$app->user->id;
+          $models->save();
+      }
+      $friend = Friend::find()->where(['idUser' => Yii::$app->user->id])->all();
+      $user = User::find()->where(['rule' => 0])->all();
+      return $this->render('index', [
+          'user' => $user,
+          'model'=> $friend,
+            'models' => $models,
+      ]);
+
+
+      
+  }
+  public function actionAdd($id){
+        
+    $user = User::find()->where(['rule' => 0])->all();
+
+    return $this->render('index', [
+        'user' => $user,
+       
+    ]);
+}
+
   public function actionUp(){
         
     

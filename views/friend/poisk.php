@@ -26,21 +26,13 @@ echo '
         <div class="d-flex ml-3 w-75">'.$friend->name.' / '.$friend->email.'</div>
         <div class="ml-4 d-flex p-3">
   
-            '.Html::a('добавить', ['music/mymusic', 'id' => $friend->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
-
+            '.Html::a('добавить', ['friend/search', 'id' => $friend->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
+            '.Html::a('+', ['index', 'id' => $friend->id] ,$options = ['class' => 'btn btn-outline-success ml-4']).'
         </div>
     </div>
 ';
     
 }
 ?>
-<?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        
-    ]); ?>
-
-
-    <?php Pjax::end(); ?> 
 
 </div>
